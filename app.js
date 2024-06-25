@@ -15,4 +15,14 @@ app.get('/users', async (request, response) => {
     }
 })
 
+app.post('/create',async (request, response) => {
+    try {
+        const user = new User(request.body);
+        await user.save();
+        response.status(201).json({ message: 'User created successfully' });
+    } catch (error) {
+        response.status(500).send({ message: error.message });
+    }
+})
+
 module.exports = app;
