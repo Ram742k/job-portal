@@ -11,16 +11,25 @@ Job Portal System
 - [ ] Admin Dashboard
 
   - [ ] Add a Company
+
   - [ ] Update a Company
+
   - [ ] Delete a Company
+
   - [ ] View all Companies
+
   - [ ] View a Company
+
   - [ ] Add a Job
+
   - [ ] Update a Job
+
   - [ ] Delete a Job
+
   - [ ] View all Jobs
-  - [ ] View a Job
   
+  - [ ] View a Job
+
   &#9745; View all users
   
   &#9745; View a user
