@@ -20,6 +20,7 @@ Job Portal System
   - [ ] Delete a Job
   - [ ] View all Jobs
   - [ ] View a Job
+  
   &#9745; View all users
   
   &#9745; View a user
