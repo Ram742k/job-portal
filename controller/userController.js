@@ -89,17 +89,12 @@ const userController = {
             }
 
     },
-
-    
-
-    updateUser: async (request, response) => {
+    logout: async (request, response) => {
         try {
-            const userID = request.params.id;
-            const user = await User.findOneAndUpdate({ _id: userID }, request.body, { new: true });
-            if (!user) {
-                return response.status(404).send({ message: 'User not found'});
-            }
-            response.status(200).json(user);
+            // clear the cookie
+            response.clearCookie('token');
+
+            response.status(200).send({ message: 'Logged out successfully' });
         } catch (error) {
             response.status(500).send({ message: error.message });
         }
