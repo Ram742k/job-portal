@@ -4,7 +4,8 @@ Job Portal System
 
 ## Features
 
-- &#9745; User registration
+&#9745; User registration
+
 - [ ] User login
 
 - [ ] Admin Dashboard
@@ -19,9 +20,11 @@ Job Portal System
   - [ ] Delete a Job
   - [ ] View all Jobs
   - [ ] View a Job
-  - &#9745; View all users
-  - &#9745; View a user
-  - &#9745; Update a user
+  &#9745; View all users
+  
+  &#9745; View a user
+  
+  &#9745; Update a user
   - [ ] Delete a user
   - [ ] View all applications
 
