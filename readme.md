@@ -10,13 +10,13 @@ Job Portal System
 
 - [ ] Admin Dashboard
 
-  - [ ] Add a Company
+    &#9745; Add a Company
 
-  - [ ] Update a Company
+    - [ ] Update a Company
 
-  - [ ] Delete a Company
+    - [ ] Delete a Company
 
-  - [ ] View all Companies
+   &#9745; View all Companies
 
   - [ ] View a Company
 
@@ -35,7 +35,9 @@ Job Portal System
   &#9745; View a user
   
   &#9745; Update a user
-  - [ ] Delete a user
+
+  &#9745; Delete a user
+
   - [ ] View all applications
 
 - [ ] User Dashboard
@@ -51,15 +53,24 @@ Job Portal System
 
 ## API Endpoints
 
-- [ ] POST /api/v1/users/register : Register a user
-- [ ] POST /api/v1/users/login : Login a user
-- [ ] GET /api/v1/users : Get all users
-- [ ] GET /api/v1/users/:id : Get a user
-- [ ] PUT /api/v1/users/:id : Update a user
-- [ ] DELETE /api/v1/users/:id : Delete a user
-- [ ] GET /api/v1/users/profile : Get user profile
-- [ ] PUT /api/v1/users/profile : Update user profile
-- [ ] DELETE /api/v1/users/profile : Delete user profile
+  &#9745; POST /api/v1/users/register : Register a user
+  
+  &#9745; POST /api/v1/users/login : Login a user
+  
+  &#9745; GET /api/v1/users : Get all users
+  
+  &#9745; GET /api/v1/users/:id : Get a user
+  
+  &#9745; PUT /api/v1/users/:id : Update a user
+  
+  &#9745; DELETE /api/v1/users/:id : Delete a user
+  
+  &#9745; GET /api/v1/users/profile : Get user profile
+  
+  &#9745; PUT /api/v1/users/profile : Update user profile
+  
+  &#9745; DELETE /api/v1/users/profile : Delete user profile
+  
 - [ ] GET /api/v1/companies : Get all companies
 - [ ] GET /api/v1/companies/:id : Get a company
 - [ ] POST /api/v1/companies : Add a company

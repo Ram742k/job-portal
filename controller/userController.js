@@ -107,6 +107,57 @@ const userController = {
         } catch (error) {
             response.status(500).send({ message: error.message });
         }
+    },
+    updateUser: async (request, response) => {
+        try {
+            // get the user id from the request params
+            const { id } = request.params;
+
+            // get the updated user data from the request body
+            const { name, email } = request.body;
+
+            // check if the user exists in the database
+            const user = await User.findById(id);
+
+            // if the user does not exist, return an error response
+            if (!user) {
+                return response.status(404).send({ message: 'User not found' });
+            }
+            
+            // update the user's name, email
+            if(name){
+                user.name = name;
+            }
+            if(email){
+                user.email = email;
+            }
+            
+            
+            // save the updated user to the database
+            await user.save();
+            
+            response.status(200).send({ message: 'User updated successfully' });
+
+
+        }
+        catch (error) {
+            response.status(500).send({ message: error.message });
+        }
+    },
+
+    deleteUser: async (request, response) => {
+     try{
+         const { id } = request.params;
+         const user = await User.findById(id);
+         if(!user){
+             return response.status(404).send({message:'User not found'});
+         }
+         await user.deleteOne();
+         response.status(200).send({message:'User deleted successfully'});
+     }   
+     catch (error){
+         response.status(500).send({message:error.message});
+     }
     }
         
     }

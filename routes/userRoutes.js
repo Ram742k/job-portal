@@ -11,5 +11,8 @@ userRouter.get('/logout',auth.verifyToken,userController.logout);
 
 userRouter.get('/:id',auth.verifyToken, userController.getUserID);
 
+userRouter.put('/:id',auth.verifyToken, userController.updateUser);
+userRouter.delete('/:id',auth.verifyToken, userController.deleteUser);
+
 
 module.exports = userRouter;
