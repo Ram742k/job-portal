@@ -1,7 +1,7 @@
 const User = require('../models/user');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
-
+const { SECRET_KEY } = require('../utils/config');
 // define the contoller for the user
 const userController = {
     getAllUsers: async (request, response) => {
@@ -63,31 +63,40 @@ const userController = {
 
     login: async (request, response) => {
         try {
-            const {email, password} = request.body;
+            // get the user email and password from the request body
+            const { email, password } = request.body;
+
+            // check if the user exists in the database
             const user = await User.findOne({ email });
+
+            // if the user does not exist, return an error response
             if (!user) {
-                return response.status(404).send({ message: 'User not found'});
-            }
-            
-            const isMatch = await bcrypt.compare(password, user.password);
-            if (!isMatch) {
-                return response.status(400).send({ message: 'Invalid credentials'});
+                return response.status(404).send({ message: 'User not found' });
             }
 
-            //gernerate jwt token 
+            // if the user exists, compare the password
+            const isPasswordValid = await bcrypt.compare(password, user.password);
 
-            const token = jwt.sign({userID: user._id}, process.env.JWT_SECRET_KEY);
-
-            //set a  cookie with token
-            response.cookie('token', token, { httpOnly: true, secure: true, sameSite: 'none', expire: new Date(Date.now() + 24 * 3600000)});
-            // send response
-            response.status(200).json({message: 'Login successful'});
-
-            }
-            catch (error) {
-                response.status(500).send({ message: error.message });
+            // if the password is invalid, return an error response
+            if(!isPasswordValid) {
+                return response.status(400).send({ message: 'Invalid password' });
             }
 
+            // generate a JWT token
+            const token = jwt.sign({ id: user._id }, SECRET_KEY);
+
+            // set a cookie with the token
+            response.cookie('token', token, {
+                httpOnly: true,
+                secure: true,
+                sameSite: 'none',
+                expires: new Date(Date.now() + 24 * 3600000) // 24 hours from login
+            });
+
+            response.status(200).json({ message: 'Login successful' });
+        } catch (error) {
+            response.status(500).send({ message: error.message });
+        }
     },
     logout: async (request, response) => {
         try {
