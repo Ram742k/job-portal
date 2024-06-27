@@ -7,10 +7,9 @@ const auth = require('../middleware/auth');
 userRouter.get('/', auth.verifyToken, userController.getAllUsers);
 userRouter.post('/', userController.postUser);
 userRouter.post('/login', userController.login);
+userRouter.get('/logout',auth.verifyToken,userController.logout);
 
-userRouter.get('/logout', userController.logout);
-
-userRouter.get('/:id', userController.getUserID);
+userRouter.get('/:id',auth.verifyToken, userController.getUserID);
 
 
 module.exports = userRouter;
