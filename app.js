@@ -1,18 +1,30 @@
 const express = require('express');
-const mongoose = require('mongoose');
-const User = require('./models/user');
 const userRouter = require('./routes/userRoutes');
-const companyRouter = require('./routes/companyRoutes')
+const companyRouter = require('./routes/companyRoutes');
 const cookieParser = require('cookie-parser');
+const cors = require('cors');
+const morgan = require('morgan');
 
 const app = express();
+
+// enable CORS
+app.use(cors(
+    {
+        origin: 'http://localhost:5173',
+        credentials: true
+    }
+));
+
+// log requests
+app.use(morgan('dev'));
+
+// parse the cookies of the request
 app.use(cookieParser());
 
+// to parse the body of the request
 app.use(express.json());
 
-app.use('/users',userRouter)
+app.use('/users', userRouter);
 app.use('/', companyRouter);
-// app.use('/create',userRouter)
-
 
 module.exports = app;

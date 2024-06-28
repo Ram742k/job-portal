@@ -158,8 +158,29 @@ const userController = {
      catch (error){
          response.status(500).send({message:error.message});
      }
+    },
+
+    getProfile: async (request, response) => {
+        try {
+            // get the user id from the request object
+            const userId = request.userId;
+            
+            const user = await User.findById(userId).select('-password');
+            
+            // if the user does not exist, return an error response
+            if (!user) {
+                return response.status(404).send({ message: 'User not found' });
+            }
+            
+            
+            // return the user data as a response
+            response.status(200).send({message:'User found', user});
+            }
+    catch(error){
+        response.status(500).send({ message: error.message });
     }
-        
+
+}   
     }
 
 

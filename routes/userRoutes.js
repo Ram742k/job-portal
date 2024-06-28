@@ -9,10 +9,12 @@ userRouter.post('/', userController.postUser);
 userRouter.post('/login', userController.login);
 userRouter.get('/logout',auth.verifyToken,userController.logout);
 
+userRouter.get("/profile",auth.verifyToken,userController.getProfile);
 userRouter.get('/:id',auth.verifyToken, userController.getUserID);
 
 userRouter.put('/:id',auth.verifyToken, userController.updateUser);
 userRouter.delete('/:id',auth.verifyToken, userController.deleteUser);
+
 
 
 module.exports = userRouter;
